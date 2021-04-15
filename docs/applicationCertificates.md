@@ -45,7 +45,7 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | sortField | string | N | Field to sort the results by. Accepted values are: certificateInfo.commonName, status, id, creationDate, lastUpdated | certificateInfo.commonName | status |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
-| perPage | string | N | How many items to return per page | 1000 | 10 |
+| perPage | string | N | How many items to return per page | 100 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: certificateInfo.commonName, status |  | status |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | the*status |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
@@ -54,14 +54,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Certificates](../lib/schemas/applicationCertificates.json) | Collection of application certificates |
+| 200 | [Application Certificates](_schemas.md#application-certificates) | Collection of application certificates |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
 
@@ -97,18 +97,18 @@ all.Application, all.Organization, all.User, applicationCertificates.*, or appli
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| applicationCertificate | [Application Certificate Post](../lib/schemas/applicationCertificatePost.json) | Y | Application certificate information |  | [Application Certificate Post Example](_schemas.md#application-certificate-post-example) |
+| applicationCertificate | [Application Certificate Post](_schemas.md#application-certificate-post) | Y | Application certificate information |  | [Application Certificate Post Example](_schemas.md#application-certificate-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Application Certificate](../lib/schemas/applicationCertificate.json) | Successfully created application certificate |
+| 201 | [Application Certificate](_schemas.md#application-certificate) | Successfully created application certificate |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |

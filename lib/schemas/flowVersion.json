@@ -932,6 +932,17 @@
                   },
                   "config": {
                     "type": "object",
+                    "properties": {
+                      "scope": {
+                        "type": "string",
+                        "enum": [
+                          "local",
+                          "global",
+                          "experience",
+                          "cloud"
+                        ]
+                      }
+                    },
                     "additionalProperties": false
                   },
                   "meta": {
@@ -1396,6 +1407,19 @@
                       "baudRate": {
                         "type": "number"
                       },
+                      "dataBits": {
+                        "type": "number"
+                      },
+                      "stopBits": {
+                        "type": "number"
+                      },
+                      "parity": {
+                        "type": "string",
+                        "maxLength": 8
+                      },
+                      "rtscts": {
+                        "type": "boolean"
+                      },
                       "encoding": {
                         "type": "string",
                         "maxLength": 48
@@ -1404,11 +1428,19 @@
                         "type": "string",
                         "maxLength": 1024
                       },
+                      "writeOnOpenEncoding": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
                       "byteLength": {
                         "type": "string",
                         "maxLength": 48
                       },
                       "delimiter": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "delimiterEncoding": {
                         "type": "string",
                         "maxLength": 48
                       }
@@ -3098,6 +3130,17 @@
                   },
                   "config": {
                     "type": "object",
+                    "properties": {
+                      "scope": {
+                        "type": "string",
+                        "enum": [
+                          "local",
+                          "global",
+                          "experience",
+                          "cloud"
+                        ]
+                      }
+                    },
                     "additionalProperties": false
                   },
                   "meta": {
@@ -3562,6 +3605,19 @@
                       "baudRate": {
                         "type": "number"
                       },
+                      "dataBits": {
+                        "type": "number"
+                      },
+                      "stopBits": {
+                        "type": "number"
+                      },
+                      "parity": {
+                        "type": "string",
+                        "maxLength": 8
+                      },
+                      "rtscts": {
+                        "type": "boolean"
+                      },
                       "encoding": {
                         "type": "string",
                         "maxLength": 48
@@ -3570,11 +3626,19 @@
                         "type": "string",
                         "maxLength": 1024
                       },
+                      "writeOnOpenEncoding": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
                       "byteLength": {
                         "type": "string",
                         "maxLength": 48
                       },
                       "delimiter": {
+                        "type": "string",
+                        "maxLength": 48
+                      },
+                      "delimiterEncoding": {
                         "type": "string",
                         "maxLength": 48
                       }

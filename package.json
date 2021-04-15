@@ -1,6 +1,6 @@
 {
   "name": "wegnology-rest",
-  "version": "2.5.2",
+  "version": "2.8.0",
   "description": "REST client for accessing the WEGnology API",
   "main": "lib/index.js",
   "homepage": "https://github.com/WEGnology/wegnology-rest-js#readme",
@@ -38,6 +38,7 @@
     "uri-template": "^1.0.1"
   },
   "devDependencies": {
+    "bravado-client-generator": "git://github.com/Losant/bravado-client-generator.git#0.3.2",
     "eslint": "^4.19.1",
     "mocha": "^5.2.0",
     "nock": "^9.6.1",
