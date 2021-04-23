@@ -64,6 +64,9 @@
     "emailVerified": {
       "type": "boolean"
     },
+    "needsToVerifyEmail": {
+      "type": "boolean"
+    },
     "twoFactorAuthEnabled": {
       "type": "boolean"
     },
@@ -71,9 +74,6 @@
       "type": "string"
     },
     "githubName": {
-      "type": "string"
-    },
-    "twitterName": {
       "type": "string"
     },
     "avatarUrl": {

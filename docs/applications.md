@@ -43,7 +43,7 @@ all.Organization, all.Organization.read, all.User, all.User.read, applications.*
 | sortField | string | N | Field to sort the results by. Accepted values are: name, id, creationDate, ownerId, lastUpdated | name | name |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
-| perPage | string | N | How many items to return per page | 1000 | 10 |
+| perPage | string | N | How many items to return per page | 100 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: name |  | name |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my * app |
 | orgId | string | N | If not provided, return all applications. If provided but blank, only return applications belonging to the current user. If provided and an id, only return applications belonging to the given organization id. |  | 575ecdf07ae143cd83dc4a9a |
@@ -55,13 +55,13 @@ all.Organization, all.Organization.read, all.User, all.User.read, applications.*
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Applications](../lib/schemas/applications.json) | Collection of applications |
+| 200 | [Applications](_schemas.md#applications) | Collection of applications |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
 
 <br/>
 
@@ -108,16 +108,16 @@ all.Organization, all.User, applications.*, or applications.import.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Application Creation By Template Result](../lib/schemas/applicationCreationByTemplateResult.json) | Successfully created application |
-| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If application was enqueued to be imported |
+| 201 | [Application Creation By Template Result](_schemas.md#application-creation-by-template-result) | Successfully created application |
+| 202 | [Job Enqueued API Result](_schemas.md#job-enqueued-api-result) | If application was enqueued to be imported |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application is not found |
-| 422 | [Validation Error](../lib/schemas/validationErrors.json) | Error if too many validation errors occurred on other resources |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application is not found |
+| 422 | [Validation Error](_schemas.md#validation-error) | Error if too many validation errors occurred on other resources |
 
 <br/>
 
@@ -151,7 +151,7 @@ all.Organization, all.User, applications.*, or applications.post.
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
-| application | [Application Post](../lib/schemas/applicationPost.json) | Y | New application information |  | [Application Post Example](_schemas.md#application-post-example) |
+| application | [Application Post](_schemas.md#application-post) | Y | New application information |  | [Application Post Example](_schemas.md#application-post-example) |
 | summaryExclude | string | N | Comma-separated list of summary fields to exclude from application summary |  | payloadCount |
 | summaryInclude | string | N | Comma-separated list of summary fields to include in application summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
@@ -160,10 +160,10 @@ all.Organization, all.User, applications.*, or applications.post.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Application](../lib/schemas/application.json) | Successfully created application |
+| 201 | [Application](_schemas.md#application) | Successfully created application |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |

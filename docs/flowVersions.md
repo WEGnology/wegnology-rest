@@ -47,24 +47,25 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | sortField | string | N | Field to sort the results by. Accepted values are: version, id, creationDate, lastUpdated | version | version |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
-| perPage | string | N | How many items to return per page | 1000 | 10 |
+| perPage | string | N | How many items to return per page | 100 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: version |  | version |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | my*version |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
+| query | [Advanced Workflow Version Query](_schemas.md#advanced-workflow-version-query) | N | Workflow filter JSON object which overrides the filterField and filter parameters. |  | [Advanced Workflow Version Query Example](_schemas.md#advanced-workflow-version-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Workflow Versions](../lib/schemas/flowVersions.json) | Collection of flow versions |
+| 200 | [Workflow Versions](_schemas.md#workflow-versions) | Collection of flow versions |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |
 
 <br/>
 
@@ -102,7 +103,7 @@ all.Application, all.Organization, all.User, flowVersions.*, or flowVersions.pos
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | flowId | string | Y | ID associated with the flow |  | 575ed18f7ae143cd83dc4aa6 |
-| flowVersion | [Workflow Version Post](../lib/schemas/flowVersionPost.json) | Y | New flow version information |  | [Workflow Version Post Example](_schemas.md#workflow-version-post-example) |
+| flowVersion | [Workflow Version Post](_schemas.md#workflow-version-post) | Y | New flow version information |  | [Workflow Version Post Example](_schemas.md#workflow-version-post-example) |
 | includeCustomNodes | string | N | If the result of the request should also include the details of any custom nodes referenced by the returned workflows | false | true |
 | allowReplacement | string | N | Allow replacement of an existing flow version with same version name | false | true |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
@@ -111,11 +112,11 @@ all.Application, all.Organization, all.User, flowVersions.*, or flowVersions.pos
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Workflow Version](../lib/schemas/flowVersion.json) | Successfully created flow version |
+| 201 | [Workflow Version](_schemas.md#workflow-version) | Successfully created flow version |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if flow was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if flow was not found |

@@ -42,26 +42,27 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| sortField | string | N | Field to sort the results by. Accepted values are: key, status, id, creationDate, lastUpdated | name | name |
-| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
+| sortField | string | N | Field to sort the results by. Accepted values are: key, status, id, creationDate, lastUpdated | creationDate | creationDate |
+| sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | desc | asc |
 | page | string | N | Which page of results to return | 0 | 0 |
-| perPage | string | N | How many items to return per page | 1000 | 10 |
+| perPage | string | N | How many items to return per page | 100 | 10 |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: key, status |  | key |
 | filter | string | N | Filter to apply against the filtered field. Supports globbing. Blank or not provided means no filtering. |  | the*key |
+| query | [Advanced Application Key Query](_schemas.md#advanced-application-key-query) | N | Application key filter JSON object which overrides the filterField and filter parameters. |  | [Advanced Application Key Query Example](_schemas.md#advanced-application-key-query-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Keys](../lib/schemas/applicationKeys.json) | Collection of applicationKeys |
+| 200 | [Application Keys](_schemas.md#application-keys) | Collection of applicationKeys |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
 
 <br/>
 
@@ -97,18 +98,18 @@ all.Application, all.Organization, all.User, applicationKeys.*, or applicationKe
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| applicationKey | [Application Key Post](../lib/schemas/applicationKeyPost.json) | Y | ApplicationKey information |  | [Application Key Post Example](_schemas.md#application-key-post-example) |
+| applicationKey | [Application Key Post](_schemas.md#application-key-post) | Y | ApplicationKey information |  | [Application Key Post Example](_schemas.md#application-key-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Application Key Post Response](../lib/schemas/applicationKeyPostResponse.json) | Successfully created applicationKey |
+| 201 | [Application Key Post Response](_schemas.md#application-key-post-response) | Successfully created applicationKey |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
-| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
+| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 404 | [Error](_schemas.md#error) | Error if application was not found |
