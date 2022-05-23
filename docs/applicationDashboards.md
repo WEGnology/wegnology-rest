@@ -54,14 +54,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Dashboards](_schemas.md#dashboards) | Collection of dashboards |
+| 200 | [Dashboards](../lib/schemas/dashboards.json) | Collection of dashboards |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
 
 <br/>
 
@@ -97,18 +97,18 @@ all.Application, all.Organization, all.User, applicationDashboards.*, or applica
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| dashboard | [Application Dashboard Post](_schemas.md#application-dashboard-post) | Y | New dashboard information |  | [Application Dashboard Post Example](_schemas.md#application-dashboard-post-example) |
+| dashboard | [Application Dashboard Post](../lib/schemas/applicationDashboardPost.json) | Y | New dashboard information |  | [Application Dashboard Post Example](_schemas.md#application-dashboard-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Dashboard](_schemas.md#dashboard) | Successfully created dashboard |
+| 201 | [Dashboard](../lib/schemas/dashboard.json) | Successfully created dashboard |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |

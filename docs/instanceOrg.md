@@ -51,14 +51,14 @@ all.Instance, all.User, instanceOrg.*, or instanceOrg.delete.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If organization was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If organization was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization was not found |
 
 <br/>
 
@@ -95,20 +95,21 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrg.*, or inst
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in org summary |  | payloadCount |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Organization](_schemas.md#instance-organization) | A single organization |
+| 200 | [Instance Organization](../lib/schemas/instanceOrg.json) | A single organization |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization was not found |
 
 <br/>
 
@@ -146,18 +147,19 @@ all.Instance, all.User, instanceOrg.*, or instanceOrg.patch.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
 | orgId | string | Y | ID associated with the organization |  | 575ed6e87ae143cd83dc4aa8 |
-| organization | [Instance Owned Organization Patch](_schemas.md#instance-owned-organization-patch) | Y | Object containing new organization properties |  | [Instance Owned Organization Patch Example](_schemas.md#instance-owned-organization-patch-example) |
+| summaryInclude | string | N | Comma-separated list of summary fields to include in org summary |  | payloadCount |
+| organization | [Instance Owned Organization Patch](../lib/schemas/instanceOrgPatch.json) | Y | Object containing new organization properties |  | [Instance Owned Organization Patch Example](_schemas.md#instance-owned-organization-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Organization](_schemas.md#instance-organization) | Updated organization information |
+| 200 | [Instance Organization](../lib/schemas/instanceOrg.json) | Updated organization information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization was not found |

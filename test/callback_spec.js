@@ -59,7 +59,7 @@ describe('callback tests', function() {
   it('should correctly make calls with nested query params', function(done){
     var client = api.createClient({ accessToken: 'my token' });
 
-    nock('https://api.app.wnology.io', {
+    nock('https://api.app.wnology.io:443', {
       reqheaders: {
         Accept: 'application/json',
         Authorization: 'Bearer my token'

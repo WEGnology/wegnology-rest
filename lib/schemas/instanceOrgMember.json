@@ -2,6 +2,14 @@
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
   "properties": {
+    "instanceId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "orgId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
     "userId": {
       "type": "string",
       "pattern": "^[A-Fa-f\\d]{24}$"
@@ -18,7 +26,6 @@
     },
     "lastName": {
       "type": "string",
-      "minLength": 1,
       "maxLength": 1024
     },
     "role": {
@@ -30,7 +37,14 @@
     },
     "avatarUrl": {
       "type": "string",
-      "format": "url"
+      "format": "uri",
+      "maxLength": 1024
+    },
+    "twoFactorAuthEnabled": {
+      "type": "boolean"
+    },
+    "ssoLinked": {
+      "type": "boolean"
     }
   },
   "additionalProperties": false

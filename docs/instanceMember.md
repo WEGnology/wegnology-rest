@@ -51,14 +51,14 @@ all.Instance, all.User, instanceMember.*, or instanceMember.delete.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If member was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If member was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if instance or member was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance or member was not found |
 
 <br/>
 
@@ -101,14 +101,14 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceMember.*, or i
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Member](_schemas.md#instance-member) | A single instance member |
+| 200 | [Instance Member](../lib/schemas/instanceMember.json) | A single instance member |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if instance or member was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance or member was not found |
 
 <br/>
 
@@ -146,18 +146,18 @@ all.Instance, all.User, instanceMember.*, or instanceMember.patch.
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
 | userId | string | Y | ID associated with the instance member |  | 575ec8687ae143cd83dc4a94 |
-| member | [Instance Member Patch](_schemas.md#instance-member-patch) | Y | Object containing new member info |  | [Instance Member Patch Example](_schemas.md#instance-member-patch-example) |
+| member | [Instance Member Patch](../lib/schemas/instanceMemberPatch.json) | Y | Object containing new member info |  | [Instance Member Patch Example](_schemas.md#instance-member-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Member Patch](_schemas.md#instance-member-patch) | The modified instance member |
+| 200 | [Instance Member Patch](../lib/schemas/instanceMemberPatch.json) | The modified instance member |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if instance or member was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance or member was not found |

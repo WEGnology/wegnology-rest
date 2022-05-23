@@ -13,7 +13,7 @@ parameters and the potential responses.
 
 ## Get
 
-Returns an instance member
+Returns a collection of instance organization members
 
 ```javascript
 var params = {
@@ -43,7 +43,7 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgMembers.*, 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
-| orgId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
+| orgId | string | Y | ID associated with the organization |  | 575ec8687ae143cd83dc4a97 |
 | sortField | string | N | Field to sort the results by. Accepted values are: email, role | email | role |
 | sortDirection | string | N | Direction to sort the results by. Accepted values are: asc, desc | asc | asc |
 | filterField | string | N | Field to filter the results by. Blank or not provided means no filtering. Accepted values are: email, role |  | email |
@@ -54,14 +54,14 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgMembers.*, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Organization Members](_schemas.md#instance-organization-members) | A collection of instance organization members |
+| 200 | [Instance Organization Members](../lib/schemas/instanceOrgMembers.json) | A collection of instance organization members |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if instance was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance was not found |
 
 <br/>
 
@@ -98,19 +98,19 @@ all.Instance, all.User, instanceOrgMembers.*, or instanceOrgMembers.post.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
-| orgId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
-| member | [Instance Org Member Post](_schemas.md#instance-org-member-post) | Y | Object containing new member info |  | [Instance Org Member Post Example](_schemas.md#instance-org-member-post-example) |
+| orgId | string | Y | ID associated with the organization |  | 575ec8687ae143cd83dc4a97 |
+| member | [Instance Org Member Post](../lib/schemas/instanceOrgMemberPost.json) | Y | Object containing new member info |  | [Instance Org Member Post Example](_schemas.md#instance-org-member-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Org Member](_schemas.md#instance-org-member) | The newly created instance member |
+| 200 | [Instance Org Member](../lib/schemas/instanceOrgMember.json) | The newly created instance member |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if instance was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance was not found |

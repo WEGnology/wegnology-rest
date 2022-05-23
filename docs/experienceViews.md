@@ -35,7 +35,7 @@ client.experienceViews.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, experienceViews.*, or experienceViews.get.
+all.Application, all.Application.cli, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.cli, all.User.read, experienceViews.*, or experienceViews.get.
 
 #### Available Parameters
 
@@ -56,14 +56,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Views](_schemas.md#experience-views) | Collection of experience views |
+| 200 | [Experience Views](../lib/schemas/experienceViews.json) | Collection of experience views |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
 
 <br/>
 
@@ -92,25 +92,25 @@ client.experienceViews.post(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, experienceViews.*, or experienceViews.post.
+all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, experienceViews.*, or experienceViews.post.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| experienceView | [Experience View Post](_schemas.md#experience-view-post) | Y | New experience view information |  | [Experience View Post Example](_schemas.md#experience-view-post-example) |
+| experienceView | [Experience View Post](../lib/schemas/experienceViewPost.json) | Y | New experience view information |  | [Experience View Post Example](_schemas.md#experience-view-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Experience View](_schemas.md#experience-view) | Successfully created experience view |
+| 201 | [Experience View](../lib/schemas/experienceView.json) | Successfully created experience view |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |

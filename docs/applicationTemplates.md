@@ -54,13 +54,13 @@ all.User, all.User.read, applicationTemplates.*, or applicationTemplates.get.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Templates](_schemas.md#application-templates) | Collection of application templates |
+| 200 | [Application Templates](../lib/schemas/applicationTemplates.json) | Collection of application templates |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
 
 <br/>
 
@@ -99,13 +99,13 @@ all.User, all.User.read, applicationTemplates.*, or applicationTemplates.getCate
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Template Categories](_schemas.md#application-template-categories) | Collection of application categories |
+| 200 | [Application Template Categories](../lib/schemas/applicationTemplateCategories.json) | Collection of application categories |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
 
 <br/>
 
@@ -143,10 +143,10 @@ all.User, all.User.read, applicationTemplates.*, or applicationTemplates.getUniq
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Template Keywords](_schemas.md#template-keywords) | Array of all unique template keywords |
+| 200 | [Template Keywords](../lib/schemas/templateKeywords.json) | Array of all unique template keywords |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |

@@ -25,10 +25,35 @@
             "type": "string",
             "maxLength": 32767
           },
-          "iconData": {
+          "shortDescription": {
             "type": "string",
-            "maxLength": 32767,
-            "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
+            "maxLength": 1024
+          },
+          "iconData": {
+            "oneOf": [
+              {
+                "type": "string",
+                "maxLength": 32767,
+                "pattern": "^data:image/(jpg|jpeg|png|svg\\+xml);base64,[0-9a-zA-Z+/=]*$"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "docsUrl": {
+            "type": "string",
+            "maxLength": 1024
+          },
+          "category": {
+            "type": "string",
+            "enum": [
+              "data",
+              "experience",
+              "logic",
+              "output",
+              ""
+            ]
           },
           "enabled": {
             "type": "boolean"
@@ -58,7 +83,6 @@
                         "onBoot",
                         "onConnect",
                         "onDisconnect",
-                        "request",
                         "udp",
                         "webhook"
                       ]
@@ -83,7 +107,9 @@
                             "deviceCommand",
                             "deviceIdsTagsConnect",
                             "deviceIdsTagsDisconnect",
+                            "eeaInit",
                             "flowError",
+                            "azureEventHub",
                             "googlePubSub",
                             "meridian",
                             "mqtt",
@@ -92,7 +118,6 @@
                             "onConnect",
                             "onDisconnect",
                             "particle",
-                            "request",
                             "udp",
                             "webhook"
                           ]
@@ -147,7 +172,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -251,7 +277,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -298,6 +325,21 @@
                         },
                         "maxAge": {
                           "type": "number"
+                        },
+                        "triggerOn": {
+                          "type": "string",
+                          "enum": [
+                            "batch",
+                            "individual",
+                            "both"
+                          ]
+                        },
+                        "batchBehavior": {
+                          "type": "string",
+                          "enum": [
+                            "once",
+                            "each"
+                          ]
                         }
                       },
                       "additionalProperties": false
@@ -380,7 +422,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -476,7 +519,100 @@
                         "type": "array",
                         "items": {
                           "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "direct"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {},
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "direct"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
                           "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -573,7 +709,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -678,7 +815,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -786,7 +924,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -897,7 +1036,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -998,7 +1138,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -1101,7 +1242,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -1241,7 +1383,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -1364,7 +1507,121 @@
                         "type": "array",
                         "items": {
                           "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "request"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "method": {
+                          "type": "string",
+                          "enum": [
+                            "*",
+                            "delete",
+                            "get",
+                            "options",
+                            "patch",
+                            "post",
+                            "put"
+                          ]
+                        },
+                        "route": {
+                          "type": "string",
+                          "maxLength": 1024
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "request"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
                           "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "triggerId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -1507,7 +1764,163 @@
                         "type": "array",
                         "items": {
                           "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "snmpTrap"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "udpPort": {
+                          "type": "string",
+                          "maxLength": 5
+                        },
+                        "snmpTrapConfig": {
+                          "type": "object",
+                          "properties": {
+                            "community": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "user": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "securityLevel": {
+                                  "type": "string",
+                                  "enum": [
+                                    "none",
+                                    "auth",
+                                    "authAndEncrypt"
+                                  ]
+                                },
+                                "authMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "sha",
+                                    "md5"
+                                  ]
+                                },
+                                "authKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "encryptionMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "aes",
+                                    "des"
+                                  ]
+                                },
+                                "encryptionKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "securityLevel"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "udpPort",
+                        "snmpTrapConfig"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "snmpTrap"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
                           "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -1633,7 +2046,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -1748,7 +2162,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -1789,7 +2204,8 @@
                     "type": "array",
                     "items": {
                       "type": "string",
-                      "maxLength": 255
+                      "maxLength": 48,
+                      "minLength": 1
                     },
                     "maxItems": 100
                   },
@@ -1830,6 +2246,7 @@
             "enum": [
               "cloud",
               "edge",
+              "embedded",
               "experience",
               "customNode"
             ]
@@ -2237,7 +2654,6 @@
                         "onBoot",
                         "onConnect",
                         "onDisconnect",
-                        "request",
                         "udp",
                         "webhook"
                       ]
@@ -2262,7 +2678,9 @@
                             "deviceCommand",
                             "deviceIdsTagsConnect",
                             "deviceIdsTagsDisconnect",
+                            "eeaInit",
                             "flowError",
+                            "azureEventHub",
                             "googlePubSub",
                             "meridian",
                             "mqtt",
@@ -2271,7 +2689,6 @@
                             "onConnect",
                             "onDisconnect",
                             "particle",
-                            "request",
                             "udp",
                             "webhook"
                           ]
@@ -2326,7 +2743,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -2430,7 +2848,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -2477,6 +2896,21 @@
                         },
                         "maxAge": {
                           "type": "number"
+                        },
+                        "triggerOn": {
+                          "type": "string",
+                          "enum": [
+                            "batch",
+                            "individual",
+                            "both"
+                          ]
+                        },
+                        "batchBehavior": {
+                          "type": "string",
+                          "enum": [
+                            "once",
+                            "each"
+                          ]
                         }
                       },
                       "additionalProperties": false
@@ -2559,7 +2993,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -2655,7 +3090,100 @@
                         "type": "array",
                         "items": {
                           "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "direct"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {},
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "direct"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
                           "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -2752,7 +3280,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -2857,7 +3386,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -2965,7 +3495,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -3076,7 +3607,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -3177,7 +3709,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -3280,7 +3813,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -3420,7 +3954,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -3543,7 +4078,121 @@
                         "type": "array",
                         "items": {
                           "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "request"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "method": {
+                          "type": "string",
+                          "enum": [
+                            "*",
+                            "delete",
+                            "get",
+                            "options",
+                            "patch",
+                            "post",
+                            "put"
+                          ]
+                        },
+                        "route": {
+                          "type": "string",
+                          "maxLength": 1024
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "request"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
                           "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "triggerId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -3686,7 +4335,163 @@
                         "type": "array",
                         "items": {
                           "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
+                        },
+                        "maxItems": 100
+                      },
+                      "maxItems": 100
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "key": {
+                      "type": "string",
+                      "maxLength": 1024
+                    },
+                    "type": {
+                      "type": "string",
+                      "enum": [
+                        "snmpTrap"
+                      ]
+                    },
+                    "config": {
+                      "type": "object",
+                      "properties": {
+                        "udpPort": {
+                          "type": "string",
+                          "maxLength": 5
+                        },
+                        "snmpTrapConfig": {
+                          "type": "object",
+                          "properties": {
+                            "community": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "user": {
+                              "type": "object",
+                              "properties": {
+                                "name": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "securityLevel": {
+                                  "type": "string",
+                                  "enum": [
+                                    "none",
+                                    "auth",
+                                    "authAndEncrypt"
+                                  ]
+                                },
+                                "authMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "sha",
+                                    "md5"
+                                  ]
+                                },
+                                "authKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                },
+                                "encryptionMethod": {
+                                  "type": "string",
+                                  "enum": [
+                                    "aes",
+                                    "des"
+                                  ]
+                                },
+                                "encryptionKey": {
+                                  "type": "string",
+                                  "maxLength": 1024
+                                }
+                              },
+                              "required": [
+                                "name",
+                                "securityLevel"
+                              ],
+                              "additionalProperties": false
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "required": [
+                        "udpPort",
+                        "snmpTrapConfig"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "meta": {
+                      "type": "object",
+                      "properties": {
+                        "category": {
+                          "type": "string",
+                          "enum": [
+                            "trigger"
+                          ]
+                        },
+                        "name": {
+                          "type": "string",
+                          "enum": [
+                            "snmpTrap"
+                          ]
+                        },
+                        "label": {
+                          "type": "string",
+                          "minLength": 1,
                           "maxLength": 255
+                        },
+                        "x": {
+                          "type": "number"
+                        },
+                        "y": {
+                          "type": "number"
+                        },
+                        "uiId": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "description": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "icon": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "color": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "inputCount": {
+                          "type": "number"
+                        },
+                        "outputCount": {
+                          "type": "number"
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "outputIds": {
+                      "type": "array",
+                      "items": {
+                        "type": "array",
+                        "items": {
+                          "type": "string",
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -3812,7 +4617,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -3927,7 +4733,8 @@
                         "type": "array",
                         "items": {
                           "type": "string",
-                          "maxLength": 255
+                          "maxLength": 48,
+                          "minLength": 1
                         },
                         "maxItems": 100
                       },
@@ -3968,7 +4775,8 @@
                     "type": "array",
                     "items": {
                       "type": "string",
-                      "maxLength": 255
+                      "maxLength": 48,
+                      "minLength": 1
                     },
                     "maxItems": 100
                   },

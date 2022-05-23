@@ -36,28 +36,28 @@ client.experience.bootstrap(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, experience.*, or experience.bootstrap.
+all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, experience.*, or experience.bootstrap.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| options | [Experience Bootstrap Options](_schemas.md#experience-bootstrap-options) | Y | Bootstrap options |  | [Experience Bootstrap Options Example](_schemas.md#experience-bootstrap-options-example) |
+| options | [Experience Bootstrap Options](../lib/schemas/experienceBootstrapOptions.json) | Y | Bootstrap options |  | [Experience Bootstrap Options Example](_schemas.md#experience-bootstrap-options-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Bootstrap Result](_schemas.md#experience-bootstrap-result) | If bootstrap was successful |
+| 200 | [Experience Bootstrap Result](../lib/schemas/experienceBootstrapResult.json) | If bootstrap was successful |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
 
 <br/>
 
@@ -106,11 +106,11 @@ all.Application, all.Organization, all.User, experience.*, or experience.delete.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If deletion was successful |
+| 200 | [Success](../lib/schemas/success.json) | If deletion was successful |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |

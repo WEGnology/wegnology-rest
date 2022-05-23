@@ -35,7 +35,7 @@ client.experienceVersions.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, experienceVersions.*, or experienceVersions.get.
+all.Application, all.Application.cli, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.cli, all.User.read, experienceVersions.*, or experienceVersions.get.
 
 #### Available Parameters
 
@@ -54,14 +54,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Versions](_schemas.md#experience-versions) | Collection of experience versions |
+| 200 | [Experience Versions](../lib/schemas/experienceVersions.json) | Collection of experience versions |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |
 
 <br/>
 
@@ -90,25 +90,25 @@ client.experienceVersions.post(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, experienceVersions.*, or experienceVersions.post.
+all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, experienceVersions.*, or experienceVersions.post.
 
 #### Available Parameters
 
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
-| experienceVersion | [Experience Version Post](_schemas.md#experience-version-post) | Y | New experience version information |  | [Experience Version Post Example](_schemas.md#experience-version-post-example) |
+| experienceVersion | [Experience Version Post](../lib/schemas/experienceVersionPost.json) | Y | New experience version information |  | [Experience Version Post Example](_schemas.md#experience-version-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 201 | [Experience Version](_schemas.md#experience-version) | Successfully created experience version |
+| 201 | [Experience Version](../lib/schemas/experienceVersion.json) | Successfully created experience version |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if application was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if application was not found |

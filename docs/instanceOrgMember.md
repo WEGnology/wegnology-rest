@@ -53,14 +53,14 @@ all.Instance, all.User, instanceOrgMember.*, or instanceOrgMember.delete.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If member was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If member was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization or member was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization or member was not found |
 
 <br/>
 
@@ -105,14 +105,14 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceOrgMember.*, o
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Org Member](_schemas.md#instance-org-member) | A single organization member |
+| 200 | [Instance Org Member](../lib/schemas/instanceOrgMember.json) | A single organization member |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if instance, organization, or member was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance, organization, or member was not found |
 
 <br/>
 
@@ -152,18 +152,18 @@ all.Instance, all.User, instanceOrgMember.*, or instanceOrgMember.patch.
 | instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a95 |
 | orgId | string | Y | ID associated with the organization |  | 575ec8687ae143cd83dc4a97 |
 | userId | string | Y | ID associated with the organization member |  | 575ec8687ae143cd83dc4a94 |
-| member | [Instance Org Member Patch](_schemas.md#instance-org-member-patch) | Y | Object containing new member info |  | [Instance Org Member Patch Example](_schemas.md#instance-org-member-patch-example) |
+| member | [Instance Org Member Patch](../lib/schemas/instanceOrgMemberPatch.json) | Y | Object containing new member info |  | [Instance Org Member Patch Example](_schemas.md#instance-org-member-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Org Member](_schemas.md#instance-org-member) | The modified organization member |
+| 200 | [Instance Org Member](../lib/schemas/instanceOrgMember.json) | The modified organization member |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if organization or member was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if organization or member was not found |
