@@ -47,11 +47,11 @@ all.User, all.User.read, applicationTemplate.*, or applicationTemplate.get.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Application Template](_schemas.md#application-template) | Application template information |
+| 200 | [Application Template](../lib/schemas/applicationTemplate.json) | Application template information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if template was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if template was not found |

@@ -50,7 +50,8 @@
             "type": "string",
             "enum": [
               "v1",
-              "v2"
+              "v2",
+              "v3"
             ]
           },
           "inputs": {
@@ -615,9 +616,54 @@
                     "outputType"
                   ],
                   "additionalProperties": false
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "outputType": {
+                      "type": "string",
+                      "enum": [
+                        "temporaryUrl"
+                      ]
+                    },
+                    "fileName": {
+                      "oneOf": [
+                        {
+                          "type": "string",
+                          "pattern": "^(?!\\.{1,2}$)[0-9a-zA-Z_.-]{1,255}$"
+                        },
+                        {
+                          "type": "string",
+                          "minLength": 4,
+                          "maxLength": 255,
+                          "pattern": ".*{{.+}}.*"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "fileName",
+                    "outputType"
+                  ],
+                  "additionalProperties": false
                 }
               ]
             }
+          },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "minutesThisPeriod": {
+                "type": "number"
+              },
+              "runsThisPeriod": {
+                "type": "number"
+              },
+              "errorsThisPeriod": {
+                "type": "number"
+              }
+            },
+            "additionalProperties": false
           }
         }
       }

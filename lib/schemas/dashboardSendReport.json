@@ -1,27 +1,29 @@
 {
   "$schema": "http://json-schema.org/draft-04/schema#",
   "type": "object",
-  "required": [
-    "toEmail"
-  ],
   "properties": {
     "toEmail": {
       "type": "array",
-      "min": 1,
-      "max": 10,
+      "minItems": 1,
+      "maxItems": 10,
       "items": {
         "type": "string",
         "format": "email",
         "maxLength": 1024
       }
     },
+    "callbackUrl": {
+      "type": "string",
+      "format": "uri",
+      "maxLength": 1024
+    },
     "subject": {
       "type": "string",
-      "max": 255
+      "maxLength": 255
     },
     "message": {
       "type": "string",
-      "max": 32767
+      "maxLength": 32767
     },
     "theme": {
       "type": "string",
@@ -35,8 +37,30 @@
     },
     "timezone": {
       "type": "string",
-      "max": 255
+      "maxLength": 255
+    },
+    "locale": {
+      "type": "string",
+      "maxLength": 5
+    },
+    "ctx": {
+      "ref": "#/definitions/dashboardContextInstance"
+    },
+    "branded": {
+      "type": "boolean"
     }
   },
+  "anyOf": [
+    {
+      "required": [
+        "toEmail"
+      ]
+    },
+    {
+      "required": [
+        "callbackUrl"
+      ]
+    }
+  ],
   "additionalProperties": false
 }

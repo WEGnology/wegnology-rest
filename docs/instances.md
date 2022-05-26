@@ -50,10 +50,10 @@ all.User, all.User.read, instances.*, or instances.get.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instances](_schemas.md#instances) | Collection of instances |
+| 200 | [Instances](../lib/schemas/instances.json) | Collection of instances |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |

@@ -38,7 +38,7 @@ client.experienceView.delete(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, experienceView.*, or experienceView.delete.
+all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, experienceView.*, or experienceView.delete.
 
 #### Available Parameters
 
@@ -52,14 +52,14 @@ all.Application, all.Organization, all.User, experienceView.*, or experienceView
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](_schemas.md#success) | If experience view was successfully deleted |
+| 200 | [Success](../lib/schemas/success.json) | If experience view was successfully deleted |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience view was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience view was not found |
 
 <br/>
 
@@ -88,7 +88,7 @@ client.experienceView.get(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, experienceView.*, or experienceView.get.
+all.Application, all.Application.cli, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.cli, all.User.read, experienceView.*, or experienceView.get.
 
 #### Available Parameters
 
@@ -103,14 +103,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience View](_schemas.md#experience-view) | Experience view information |
+| 200 | [Experience View](../lib/schemas/experienceView.json) | Experience view information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience view was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience view was not found |
 
 <br/>
 
@@ -139,7 +139,7 @@ client.experienceView.linkedResources(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.read, experienceView.*, or experienceView.linkedResources.
+all.Application, all.Application.cli, all.Application.read, all.Organization, all.Organization.read, all.User, all.User.cli, all.User.read, experienceView.*, or experienceView.linkedResources.
 
 #### Available Parameters
 
@@ -155,14 +155,14 @@ all.Application, all.Application.read, all.Organization, all.Organization.read, 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience Linked Resources](_schemas.md#experience-linked-resources) | Linked resource information |
+| 200 | [Experience Linked Resources](../lib/schemas/experienceLinkedResources.json) | Linked resource information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience view was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience view was not found |
 
 <br/>
 
@@ -192,7 +192,7 @@ client.experienceView.patch(params)
 #### Authentication
 The client must be configured with a valid api access token to call this
 action. The token must include at least one of the following scopes:
-all.Application, all.Organization, all.User, experienceView.*, or experienceView.patch.
+all.Application, all.Application.cli, all.Organization, all.User, all.User.cli, experienceView.*, or experienceView.patch.
 
 #### Available Parameters
 
@@ -200,18 +200,18 @@ all.Application, all.Organization, all.User, experienceView.*, or experienceView
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | applicationId | string | Y | ID associated with the application |  | 575ec8687ae143cd83dc4a97 |
 | experienceViewId | string | Y | ID associated with the experience view |  | 575ed78e7ae143cd83dc4aab |
-| experienceView | [Experience View Patch](_schemas.md#experience-view-patch) | Y | Object containing new properties of the experience view |  | [Experience View Patch Example](_schemas.md#experience-view-patch-example) |
+| experienceView | [Experience View Patch](../lib/schemas/experienceViewPatch.json) | Y | Object containing new properties of the experience view |  | [Experience View Patch Example](_schemas.md#experience-view-patch-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Experience View](_schemas.md#experience-view) | Updated experience view information |
+| 200 | [Experience View](../lib/schemas/experienceView.json) | Updated experience view information |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if experience view was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if experience view was not found |

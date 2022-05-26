@@ -138,7 +138,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -149,7 +149,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -1008,6 +1008,147 @@
               "blockType": {
                 "type": "string",
                 "enum": [
+                  "device-count"
+                ]
+              },
+              "config": {
+                "type": "object",
+                "properties": {
+                  "segments": {
+                    "type": "array",
+                    "minItems": 1,
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "query": {
+                          "type": "string",
+                          "maxLength": 32767
+                        }
+                      },
+                      "required": [
+                        "id",
+                        "query"
+                      ],
+                      "additionalProperties": false
+                    }
+                  },
+                  "conditions": {
+                    "type": "array",
+                    "maxItems": 100,
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "color": {
+                          "type": "string",
+                          "maxLength": 64
+                        },
+                        "id": {
+                          "type": "string",
+                          "maxLength": 48
+                        },
+                        "label": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "condition": {
+                          "type": "string",
+                          "maxLength": 2048
+                        },
+                        "imageUrl": {
+                          "type": "string",
+                          "maxLength": 32767
+                        },
+                        "shape": {
+                          "type": "string",
+                          "enum": [
+                            "circle",
+                            "square",
+                            "triangle-down",
+                            "triangle-up",
+                            "octagon"
+                          ]
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "defaultCondition": {
+                    "type": "object",
+                    "properties": {
+                      "color": {
+                        "type": "string",
+                        "maxLength": 64
+                      },
+                      "label": {
+                        "type": "string",
+                        "maxLength": 32767
+                      },
+                      "value": {
+                        "type": "string",
+                        "maxLength": 32767
+                      }
+                    },
+                    "required": [
+                      "color"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                "required": [
+                  "segments",
+                  "defaultCondition"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "required": [
+              "blockType",
+              "startX",
+              "startY",
+              "width",
+              "height"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "maxLength": 48
+              },
+              "title": {
+                "type": "string",
+                "maxLength": 255
+              },
+              "description": {
+                "type": "string",
+                "maxLength": 32767
+              },
+              "applicationId": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "startX": {
+                "type": "number"
+              },
+              "startY": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number"
+              },
+              "height": {
+                "type": "number"
+              },
+              "blockType": {
+                "type": "string",
+                "enum": [
                   "device-list"
                 ]
               },
@@ -1590,7 +1731,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -1601,7 +1742,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -1622,7 +1763,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -2085,7 +2226,7 @@
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -2096,7 +2237,7 @@
                             },
                             {
                               "type": "string",
-                              "maxLength": 64
+                              "maxLength": 128
                             }
                           ]
                         },
@@ -2243,7 +2384,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -3018,7 +3159,7 @@
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -3029,7 +3170,7 @@
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -3043,8 +3184,8 @@
                             },
                             "length": {
                               "type": "integer",
-                              "min": 1,
-                              "max": 10
+                              "minimum": 1,
+                              "maximum": 10
                             },
                             "orientation": {
                               "type": "string",
@@ -3637,7 +3778,7 @@
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -3648,7 +3789,7 @@
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -3659,7 +3800,7 @@
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             },
@@ -3670,7 +3811,7 @@
                                 },
                                 {
                                   "type": "string",
-                                  "maxLength": 64
+                                  "maxLength": 128
                                 }
                               ]
                             }
@@ -4517,7 +4658,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -5028,7 +5169,7 @@
                       },
                       {
                         "type": "string",
-                        "maxLength": 64
+                        "maxLength": 128
                       }
                     ]
                   },
@@ -5259,6 +5400,9 @@
                   "includeEdge": {
                     "type": "boolean"
                   },
+                  "includeEmbedded": {
+                    "type": "boolean"
+                  },
                   "includeExperience": {
                     "type": "boolean"
                   },
@@ -5301,7 +5445,7 @@
     },
     "reportConfigs": {
       "type": "array",
-      "max": 10,
+      "maxItems": 10,
       "items": {
         "type": "object",
         "properties": {
@@ -5315,13 +5459,18 @@
           },
           "toEmail": {
             "type": "array",
-            "min": 1,
-            "max": 10,
+            "minItems": 1,
+            "maxItems": 10,
             "items": {
               "type": "string",
               "format": "email",
               "maxLength": 1024
             }
+          },
+          "callbackUrl": {
+            "type": "string",
+            "format": "uri",
+            "maxLength": 1024
           },
           "subject": {
             "type": "string",
@@ -5341,12 +5490,32 @@
           "timezone": {
             "type": "string",
             "maxLength": 255
+          },
+          "locale": {
+            "type": "string",
+            "maxLength": 5
+          },
+          "ctx": {
+            "ref": "#/definitions/dashboardContextInstance"
+          },
+          "branded": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false,
-        "required": [
-          "cron",
-          "toEmail"
+        "anyOf": [
+          {
+            "required": [
+              "cron",
+              "toEmail"
+            ]
+          },
+          {
+            "required": [
+              "cron",
+              "callbackUrl"
+            ]
+          }
         ]
       }
     },

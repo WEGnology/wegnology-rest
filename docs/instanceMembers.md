@@ -13,7 +13,7 @@ parameters and the potential responses.
 
 ## Get
 
-Returns an instance member
+Returns a collection of instance members
 
 ```javascript
 var params = {
@@ -52,14 +52,14 @@ all.Instance, all.Instance.read, all.User, all.User.read, instanceMembers.*, or 
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Members](_schemas.md#instance-members) | A collection of instance members |
+| 200 | [Instance Members](../lib/schemas/instanceMembers.json) | A collection of instance members |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if instance was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance was not found |
 
 <br/>
 
@@ -95,18 +95,18 @@ all.Instance, all.User, instanceMembers.*, or instanceMembers.post.
 | Name | Type | Required | Description | Default | Example |
 | ---- | ---- | -------- | ----------- | ------- | ------- |
 | instanceId | string | Y | ID associated with the instance |  | 575ec8687ae143cd83dc4a97 |
-| member | [Instance Member Post](_schemas.md#instance-member-post) | Y | Object containing new member info |  | [Instance Member Post Example](_schemas.md#instance-member-post-example) |
+| member | [Instance Member Post](../lib/schemas/instanceMemberPost.json) | Y | Object containing new member info |  | [Instance Member Post Example](_schemas.md#instance-member-post-example) |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Instance Member](_schemas.md#instance-member) | The newly created instance member |
+| 200 | [Instance Member](../lib/schemas/instanceMember.json) | The newly created instance member |
 
 #### Error Responses
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 400 | [Error](_schemas.md#error) | Error if malformed request |
-| 404 | [Error](_schemas.md#error) | Error if instance was not found |
+| 400 | [Error](../lib/schemas/error.json) | Error if malformed request |
+| 404 | [Error](../lib/schemas/error.json) | Error if instance was not found |
