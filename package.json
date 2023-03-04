@@ -41,7 +41,7 @@
   "devDependencies": {
     "bravado-client-generator": "github:Losant/bravado-client-generator",
     "eslint": "^4.19.1",
-    "mocha": "^5.2.0",
+    "mocha": "^10.2.0",
     "nock": "^9.6.1",
     "should": "^13.2.3"
   }
