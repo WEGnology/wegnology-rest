@@ -1,0 +1,103 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "resourceJobId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "applicationId": {
+      "type": "string",
+      "pattern": "^[A-Fa-f\\d]{24}$"
+    },
+    "dataTableId": {
+      "oneOf": [
+        {
+          "type": "string",
+          "pattern": "^[A-Fa-f\\d]{24}$"
+        },
+        {
+          "type": "string",
+          "minLength": 4,
+          "maxLength": 255,
+          "pattern": ".*{{.+}}.*"
+        }
+      ]
+    },
+    "queryJson": {
+      "type": "string",
+      "maxLength": 8192
+    },
+    "resourceType": {
+      "type": "string",
+      "enum": [
+        "dataTableRow",
+        "device",
+        "experienceGroup"
+      ]
+    },
+    "maxIterationConcurrency": {
+      "type": "integer",
+      "enum": [
+        1,
+        10
+      ]
+    },
+    "iterationDelay": {
+      "type": "integer",
+      "min": 0,
+      "max": 60000
+    },
+    "iterationTimeout": {
+      "type": "integer",
+      "min": 60000,
+      "max": 900000
+    },
+    "creationDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastUpdated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lastExecutionRequested": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "defaultContext": {
+      "type": "string",
+      "maxLength": 32767
+    },
+    "retryOnTimeout": {
+      "type": "boolean"
+    },
+    "retryOnFailure": {
+      "type": "boolean"
+    },
+    "maxIterationRetries": {
+      "type": "integer",
+      "min": 1,
+      "max": 5
+    },
+    "retryDelay": {
+      "type": "integer",
+      "min": 0,
+      "max": 30000
+    }
+  },
+  "additionalProperties": false
+}

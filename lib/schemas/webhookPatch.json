@@ -1,11 +1,15 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
       "type": "string",
       "minLength": 1,
       "maxLength": 255
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 32767
     },
     "responseCode": {
       "type": "integer",

@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "experienceViews": {
@@ -403,6 +403,30 @@
                 "type": "string",
                 "format": "date-time"
               },
+              "createdById": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "createdByType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "apiToken"
+                ]
+              },
+              "lastUpdatedById": {
+                "type": "string",
+                "pattern": "^[A-Fa-f\\d]{24}$"
+              },
+              "lastUpdatedByType": {
+                "type": "string",
+                "enum": [
+                  "flow",
+                  "user",
+                  "apiToken"
+                ]
+              },
               "name": {
                 "type": "string",
                 "minLength": 1,
@@ -431,7 +455,8 @@
                   "data",
                   "experience",
                   "logic",
-                  "output"
+                  "output",
+                  "debug"
                 ]
               },
               "enabled": {
@@ -481,7 +506,10 @@
                             "onConnect",
                             "onDisconnect",
                             "udp",
-                            "webhook"
+                            "webhook",
+                            "resourceJobIteration",
+                            "resourceJobIterationTimeout",
+                            "resourceJobComplete"
                           ]
                         },
                         "config": {
@@ -508,15 +536,18 @@
                                 "flowError",
                                 "azureEventHub",
                                 "googlePubSub",
-                                "meridian",
                                 "mqtt",
                                 "notebook",
                                 "onBoot",
                                 "onConnect",
                                 "onDisconnect",
                                 "particle",
+                                "sqs",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "label": {
@@ -1662,6 +1693,94 @@
                         "type": {
                           "type": "string",
                           "enum": [
+                            "onSync"
+                          ]
+                        },
+                        "config": {
+                          "type": "object",
+                          "properties": {
+                            "syncTypes": {
+                              "type": "array",
+                              "maxItems": 3,
+                              "minItems": 1,
+                              "items": {
+                                "type": "string",
+                                "enum": [
+                                  "application",
+                                  "device",
+                                  "peripheral"
+                                ]
+                              }
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "meta": {
+                          "type": "object",
+                          "properties": {
+                            "category": {
+                              "type": "string",
+                              "enum": [
+                                "trigger"
+                              ]
+                            },
+                            "name": {
+                              "type": "string",
+                              "enum": [
+                                "onSync"
+                              ]
+                            },
+                            "label": {
+                              "type": "string",
+                              "minLength": 1,
+                              "maxLength": 255
+                            },
+                            "x": {
+                              "type": "number"
+                            },
+                            "y": {
+                              "type": "number"
+                            },
+                            "uiId": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "description": {
+                              "type": "string",
+                              "maxLength": 32767
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "outputIds": {
+                          "type": "array",
+                          "items": {
+                            "type": "array",
+                            "items": {
+                              "type": "string",
+                              "maxLength": 48,
+                              "minLength": 1
+                            },
+                            "maxItems": 100
+                          },
+                          "maxItems": 100
+                        }
+                      },
+                      "required": [
+                        "type"
+                      ],
+                      "additionalProperties": false
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "key": {
+                          "type": "string",
+                          "maxLength": 1024
+                        },
+                        "type": {
+                          "type": "string",
+                          "enum": [
                             "opcua"
                           ]
                         },
@@ -1670,6 +1789,7 @@
                           "properties": {
                             "uri": {
                               "type": "string",
+                              "format": "uri",
                               "maxLength": 1024
                             },
                             "securityPolicy": {
@@ -1715,6 +1835,10 @@
                                 "type": "string",
                                 "maxLength": 255
                               }
+                            },
+                            "configName": {
+                              "type": "string",
+                              "maxLength": 1024
                             }
                           },
                           "additionalProperties": false
@@ -3083,10 +3207,43 @@
                     "type": "string",
                     "format": "date-time"
                   },
+                  "createdById": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "createdByType": {
+                    "type": "string",
+                    "enum": [
+                      "flow",
+                      "user",
+                      "apiToken"
+                    ]
+                  },
+                  "lastUpdatedById": {
+                    "type": "string",
+                    "pattern": "^[A-Fa-f\\d]{24}$"
+                  },
+                  "lastUpdatedByType": {
+                    "type": "string",
+                    "enum": [
+                      "flow",
+                      "user",
+                      "apiToken"
+                    ]
+                  },
                   "version": {
                     "type": "string",
                     "minLength": 1,
                     "maxLength": 255
+                  },
+                  "flowClass": {
+                    "type": "string",
+                    "enum": [
+                      "cloud",
+                      "edge",
+                      "embedded",
+                      "customNode"
+                    ]
                   },
                   "notes": {
                     "type": "string",
@@ -3121,7 +3278,10 @@
                                 "onConnect",
                                 "onDisconnect",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "config": {
@@ -3148,15 +3308,18 @@
                                     "flowError",
                                     "azureEventHub",
                                     "googlePubSub",
-                                    "meridian",
                                     "mqtt",
                                     "notebook",
                                     "onBoot",
                                     "onConnect",
                                     "onDisconnect",
                                     "particle",
+                                    "sqs",
                                     "udp",
-                                    "webhook"
+                                    "webhook",
+                                    "resourceJobIteration",
+                                    "resourceJobIterationTimeout",
+                                    "resourceJobComplete"
                                   ]
                                 },
                                 "label": {
@@ -4302,6 +4465,94 @@
                             "type": {
                               "type": "string",
                               "enum": [
+                                "onSync"
+                              ]
+                            },
+                            "config": {
+                              "type": "object",
+                              "properties": {
+                                "syncTypes": {
+                                  "type": "array",
+                                  "maxItems": 3,
+                                  "minItems": 1,
+                                  "items": {
+                                    "type": "string",
+                                    "enum": [
+                                      "application",
+                                      "device",
+                                      "peripheral"
+                                    ]
+                                  }
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "category": {
+                                  "type": "string",
+                                  "enum": [
+                                    "trigger"
+                                  ]
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "enum": [
+                                    "onSync"
+                                  ]
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 255
+                                },
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                },
+                                "uiId": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "outputIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "maxLength": 48,
+                                  "minLength": 1
+                                },
+                                "maxItems": 100
+                              },
+                              "maxItems": 100
+                            }
+                          },
+                          "required": [
+                            "type"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "opcua"
                               ]
                             },
@@ -4310,6 +4561,7 @@
                               "properties": {
                                 "uri": {
                                   "type": "string",
+                                  "format": "uri",
                                   "maxLength": 1024
                                 },
                                 "securityPolicy": {
@@ -4355,6 +4607,10 @@
                                     "type": "string",
                                     "maxLength": 255
                                   }
+                                },
+                                "configName": {
+                                  "type": "string",
+                                  "maxLength": 1024
                                 }
                               },
                               "additionalProperties": false
@@ -5705,7 +5961,10 @@
                                 "onConnect",
                                 "onDisconnect",
                                 "udp",
-                                "webhook"
+                                "webhook",
+                                "resourceJobIteration",
+                                "resourceJobIterationTimeout",
+                                "resourceJobComplete"
                               ]
                             },
                             "config": {
@@ -5732,15 +5991,18 @@
                                     "flowError",
                                     "azureEventHub",
                                     "googlePubSub",
-                                    "meridian",
                                     "mqtt",
                                     "notebook",
                                     "onBoot",
                                     "onConnect",
                                     "onDisconnect",
                                     "particle",
+                                    "sqs",
                                     "udp",
-                                    "webhook"
+                                    "webhook",
+                                    "resourceJobIteration",
+                                    "resourceJobIterationTimeout",
+                                    "resourceJobComplete"
                                   ]
                                 },
                                 "label": {
@@ -6886,6 +7148,94 @@
                             "type": {
                               "type": "string",
                               "enum": [
+                                "onSync"
+                              ]
+                            },
+                            "config": {
+                              "type": "object",
+                              "properties": {
+                                "syncTypes": {
+                                  "type": "array",
+                                  "maxItems": 3,
+                                  "minItems": 1,
+                                  "items": {
+                                    "type": "string",
+                                    "enum": [
+                                      "application",
+                                      "device",
+                                      "peripheral"
+                                    ]
+                                  }
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "meta": {
+                              "type": "object",
+                              "properties": {
+                                "category": {
+                                  "type": "string",
+                                  "enum": [
+                                    "trigger"
+                                  ]
+                                },
+                                "name": {
+                                  "type": "string",
+                                  "enum": [
+                                    "onSync"
+                                  ]
+                                },
+                                "label": {
+                                  "type": "string",
+                                  "minLength": 1,
+                                  "maxLength": 255
+                                },
+                                "x": {
+                                  "type": "number"
+                                },
+                                "y": {
+                                  "type": "number"
+                                },
+                                "uiId": {
+                                  "type": "string",
+                                  "maxLength": 48
+                                },
+                                "description": {
+                                  "type": "string",
+                                  "maxLength": 32767
+                                }
+                              },
+                              "additionalProperties": false
+                            },
+                            "outputIds": {
+                              "type": "array",
+                              "items": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string",
+                                  "maxLength": 48,
+                                  "minLength": 1
+                                },
+                                "maxItems": 100
+                              },
+                              "maxItems": 100
+                            }
+                          },
+                          "required": [
+                            "type"
+                          ],
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "key": {
+                              "type": "string",
+                              "maxLength": 1024
+                            },
+                            "type": {
+                              "type": "string",
+                              "enum": [
                                 "opcua"
                               ]
                             },
@@ -6894,6 +7244,7 @@
                               "properties": {
                                 "uri": {
                                   "type": "string",
+                                  "format": "uri",
                                   "maxLength": 1024
                                 },
                                 "securityPolicy": {
@@ -6939,6 +7290,10 @@
                                     "type": "string",
                                     "maxLength": 255
                                   }
+                                },
+                                "configName": {
+                                  "type": "string",
+                                  "maxLength": 1024
                                 }
                               },
                               "additionalProperties": false

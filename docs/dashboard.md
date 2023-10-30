@@ -198,7 +198,7 @@ all.Organization, all.User, dashboard.*, or dashboard.sendReport.
 
 | Code | Type | Description |
 | ---- | ---- | ----------- |
-| 200 | [Success](../lib/schemas/success.json) | Send dashboard report |
+| 202 | [Job Enqueued API Result](../lib/schemas/jobEnqueuedResult.json) | If dashboard report was enqueued to be sent |
 
 #### Error Responses
 
@@ -241,6 +241,9 @@ No api access token is required to call this action.
 | dashboardId | string | Y | ID of the associated dashboard |  | 575ece2b7ae143cd83dc4a9b |
 | ctx | [Dashboard Context Instance](../lib/schemas/dashboardContextInstance.json) | Y | The context object to validate |  | [Dashboard Context Instance Example](_schemas.md#dashboard-context-instance-example) |
 | password | string | N | Password for password-protected dashboards |  | myPassword |
+| duration | string | N | Duration of data to fetch in milliseconds |  | 3600000 |
+| resolution | string | N | Resolution in milliseconds |  | 60000 |
+| end | string | N | End timestamp of the data, in ms since epoch |  | 1465790400000 |
 | losantdomain | string | N | Domain scope of request (rarely needed) |  | example.com |
 
 #### Successful Responses
