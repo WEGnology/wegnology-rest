@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "name": {
@@ -38,6 +38,7 @@
         "experience",
         "logic",
         "output",
+        "debug",
         ""
       ]
     },
@@ -71,7 +72,10 @@
                   "onConnect",
                   "onDisconnect",
                   "udp",
-                  "webhook"
+                  "webhook",
+                  "resourceJobIteration",
+                  "resourceJobIterationTimeout",
+                  "resourceJobComplete"
                 ]
               },
               "config": {
@@ -98,15 +102,18 @@
                       "flowError",
                       "azureEventHub",
                       "googlePubSub",
-                      "meridian",
                       "mqtt",
                       "notebook",
                       "onBoot",
                       "onConnect",
                       "onDisconnect",
                       "particle",
+                      "sqs",
                       "udp",
-                      "webhook"
+                      "webhook",
+                      "resourceJobIteration",
+                      "resourceJobIterationTimeout",
+                      "resourceJobComplete"
                     ]
                   },
                   "label": {

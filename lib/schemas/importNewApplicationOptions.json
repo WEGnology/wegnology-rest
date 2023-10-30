@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "importUrl": {
@@ -32,12 +32,18 @@
           "File",
           "FlowVersion",
           "Flow",
+          "Global",
           "Integration",
           "Notebook",
-          "Webhook"
+          "Webhook",
+          "ResourceJob"
         ]
       },
       "uniqueItems": true
+    },
+    "forceJob": {
+      "type": "boolean",
+      "default": false
     }
   },
   "additionalProperties": false

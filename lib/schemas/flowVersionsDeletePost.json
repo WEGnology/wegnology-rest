@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "email": {
@@ -164,6 +164,50 @@
                   ]
                 },
                 "$ne": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lt": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$gte": {
+                  "oneOf": [
+                    {
+                      "type": "string",
+                      "pattern": "^[A-Fa-f\\d]{24}$"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "$lte": {
                   "oneOf": [
                     {
                       "type": "string",

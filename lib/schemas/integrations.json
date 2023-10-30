@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
@@ -39,9 +39,9 @@
             "enum": [
               "azureEventHub",
               "googlePubSub",
-              "meridian",
               "mqtt",
-              "particle"
+              "particle",
+              "sqs"
             ]
           },
           "enabled": {
@@ -87,8 +87,8 @@
             "properties": {
               "projectId": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "maxLength": 255,
+                "minLength": 1
               },
               "keyJson": {
                 "type": "string",
@@ -197,30 +197,36 @@
               "accessToken"
             ]
           },
-          "meridianConfig": {
+          "sqsConfig": {
             "type": "object",
             "properties": {
-              "authenticationToken": {
+              "accessKeyId": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "min": 4,
+                "max": 128
               },
-              "locationId": {
+              "secretAccessKey": {
                 "type": "string",
-                "minLength": 1,
-                "maxLength": 1024
+                "min": 4,
+                "max": 128
               },
-              "assetUpdates": {
-                "type": "boolean"
+              "region": {
+                "type": "string",
+                "min": 4,
+                "max": 128
               },
-              "zoneUpdates": {
-                "type": "boolean"
+              "queueUrl": {
+                "type": "string",
+                "min": 1,
+                "max": 256
               }
             },
             "additionalProperties": false,
             "required": [
-              "authenticationToken",
-              "locationId"
+              "accessKeyId",
+              "secretAccessKey",
+              "region",
+              "queueUrl"
             ]
           },
           "status": {

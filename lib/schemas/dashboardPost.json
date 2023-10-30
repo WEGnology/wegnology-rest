@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "orgId": {
@@ -120,8 +120,18 @@
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "xAxisFormat": {
                     "type": "string",
@@ -562,8 +572,18 @@
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             },
                             "resolution": {
                               "oneOf": [
@@ -735,8 +755,18 @@
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -769,6 +799,80 @@
                                 "$and",
                                 "advanced"
                               ]
+                            },
+                            "sortColumn": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "sortDirection": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "limit": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "offset": {
+                              "type": "string",
+                              "maxLength": 255
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "queryType": {
+                              "type": "string",
+                              "enum": [
+                                "device-info"
+                              ]
+                            },
+                            "id": {
+                              "type": "string",
+                              "maxLength": 48
+                            },
+                            "attributes": {
+                              "oneOf": [
+                                {
+                                  "type": "null"
+                                },
+                                {
+                                  "type": "array",
+                                  "maxItems": 100,
+                                  "items": {
+                                    "type": "string",
+                                    "maxLength": 255
+                                  }
+                                }
+                              ]
+                            },
+                            "excludeConnectionInfo": {
+                              "type": "boolean"
+                            },
+                            "sortField": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "sortDirection": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "page": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "perPage": {
+                              "type": "string",
+                              "maxLength": 255
+                            },
+                            "query": {
+                              "type": "string",
+                              "maxLength": 32767
+                            },
+                            "compositeStateType": {
+                              "type": "string",
+                              "maxLength": 255
                             }
                           },
                           "additionalProperties": false
@@ -904,14 +1008,32 @@
                     "maxLength": 255
                   },
                   "defaultSortDirection": {
-                    "type": "string",
-                    "enum": [
-                      "asc",
-                      "desc",
-                      "ASC",
-                      "DESC",
-                      ""
+                    "oneOf": [
+                      {
+                        "type": "string",
+                        "enum": [
+                          "asc",
+                          "desc",
+                          "ASC",
+                          "DESC",
+                          ""
+                        ]
+                      },
+                      {
+                        "type": "string",
+                        "minLength": 4,
+                        "maxLength": 255,
+                        "pattern": ".*{{.+}}.*"
+                      }
                     ]
+                  },
+                  "defaultLimit": {
+                    "type": "string",
+                    "maxLength": 255
+                  },
+                  "defaultOffset": {
+                    "type": "string",
+                    "maxLength": 255
                   },
                   "query": {
                     "type": "string",
@@ -1471,8 +1593,18 @@
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "sortDirection": {
                     "type": "integer",
@@ -1721,8 +1853,18 @@
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "gaugeMax": {
                     "oneOf": [
@@ -2042,9 +2184,22 @@
                   "realTime": {
                     "type": "boolean"
                   },
+                  "disallowUserSelectedDuration": {
+                    "type": "boolean"
+                  },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "resolution": {
                     "oneOf": [
@@ -2367,6 +2522,9 @@
                     "type": "string",
                     "maxLength": 255
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "defaultBearing": {
                     "type": "number"
                   },
@@ -2419,8 +2577,18 @@
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "locationTagKey": {
                     "oneOf": [
@@ -2808,8 +2976,18 @@
                               }
                             },
                             "duration": {
-                              "type": "integer",
-                              "minimum": 0
+                              "oneOf": [
+                                {
+                                  "type": "integer",
+                                  "minimum": 0
+                                },
+                                {
+                                  "type": "string",
+                                  "enum": [
+                                    "{{dashboard.duration}}"
+                                  ]
+                                }
+                              ]
                             }
                           },
                           "additionalProperties": false
@@ -3264,8 +3442,18 @@
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "segments": {
                     "type": "array",
@@ -4635,6 +4823,9 @@
                     "type": "string",
                     "maxLength": 255
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "clusterPoints": {
                     "type": "boolean"
                   },
@@ -4693,8 +4884,18 @@
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "endColor": {
                     "type": "string",
@@ -4889,8 +5090,18 @@
                     "type": "boolean"
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "percentFormat": {
                     "type": "string",
@@ -5144,6 +5355,9 @@
                       }
                     ]
                   },
+                  "centerOnDataPoints": {
+                    "type": "boolean"
+                  },
                   "compositeResult": {
                     "type": "boolean"
                   },
@@ -5159,7 +5373,6 @@
                   },
                   "defaultCenter": {
                     "type": "string",
-                    "minLength": 3,
                     "maxLength": 255
                   },
                   "defaultZoom": {
@@ -5204,8 +5417,18 @@
                     }
                   },
                   "duration": {
-                    "type": "integer",
-                    "minimum": 0
+                    "oneOf": [
+                      {
+                        "type": "integer",
+                        "minimum": 0
+                      },
+                      {
+                        "type": "string",
+                        "enum": [
+                          "{{dashboard.duration}}"
+                        ]
+                      }
+                    ]
                   },
                   "endColor": {
                     "type": "string",
@@ -5436,6 +5659,14 @@
       "minimum": 5,
       "maximum": 600
     },
+    "duration": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "resolution": {
+      "type": "integer",
+      "minimum": 1
+    },
     "defaultTheme": {
       "type": "string",
       "enum": [
@@ -5496,7 +5727,38 @@
             "maxLength": 5
           },
           "ctx": {
-            "ref": "#/definitions/dashboardContextInstance"
+            "title": "Dashboard Context Instance",
+            "description": "Schema for a dashboard context instance",
+            "type": "object",
+            "patternProperties": {
+              "^[0-9a-zA-Z_-]{1,255}$": {
+                "oneOf": [
+                  {
+                    "type": "string",
+                    "maxLength": 32767
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "key": {
+                        "type": "string",
+                        "pattern": "^[0-9a-zA-Z_-]{1,255}$"
+                      },
+                      "value": {
+                        "type": "string",
+                        "minLength": 1,
+                        "maxLength": 255
+                      }
+                    },
+                    "additionalProperties": false
+                  }
+                ]
+              }
+            },
+            "additionalProperties": false
           },
           "branded": {
             "type": "boolean"

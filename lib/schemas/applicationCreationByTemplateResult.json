@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "application": {
@@ -372,15 +372,7 @@
             "type": "string"
           },
           "id": {
-            "oneOf": [
-              {
-                "type": "string",
-                "pattern": "^[A-Fa-f\\d]{24}$"
-              },
-              {
-                "type": "string"
-              }
-            ]
+            "type": "string"
           },
           "message": {
             "type": "string"

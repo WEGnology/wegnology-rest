@@ -1,11 +1,563 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
     "items": {
       "type": "array",
       "items": {
-        "type": "#/definitions/historicalSummary"
+        "title": "Historical Summary",
+        "description": "Schema for a historical summary report",
+        "type": "object",
+        "properties": {
+          "resourceType": {
+            "type": "string",
+            "enum": [
+              "application",
+              "organization",
+              "whitelabel"
+            ]
+          },
+          "resourceId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "resourceName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "resourceProration": {
+            "type": "number"
+          },
+          "ownerType": {
+            "type": "string",
+            "enum": [
+              "organization",
+              "user"
+            ]
+          },
+          "ownerId": {
+            "type": "string",
+            "pattern": "^[A-Fa-f\\d]{24}$"
+          },
+          "ownerName": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 255
+          },
+          "limits": {
+            "type": "object",
+            "properties": {
+              "apitoken": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "application": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationkey": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "dashboard": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "datatable": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "device": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "devicerecipe": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experiencedomain": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceendpoint": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experiencegroup": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceslug": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceuser": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceversion": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceview": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "file": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "flow": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "integration": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebook": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "resourcejob": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "webhook": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "dataTTL": {
+                "type": "integer",
+                "minimum": 86400
+              },
+              "member": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "payload": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "storage": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebookMinutesPerRun": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebookMinutesPerMonth": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "notebookInParallel": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "experienceFlowSlots": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "applicationFlowSlots": {
+                "type": "integer",
+                "minimum": 0
+              }
+            },
+            "additionalProperties": false
+          },
+          "currentPeriodStart": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "currentPeriodEnd": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "applicationCount": {
+            "type": "number"
+          },
+          "applicationCountProrated": {
+            "type": "number"
+          },
+          "userCount": {
+            "type": "number"
+          },
+          "userCountProrated": {
+            "type": "number"
+          },
+          "apiTokenCount": {
+            "type": "number"
+          },
+          "applicationKeyCount": {
+            "type": "number"
+          },
+          "certificateAuthorityCount": {
+            "type": "number"
+          },
+          "certificateCount": {
+            "type": "number"
+          },
+          "dashboardCount": {
+            "type": "number"
+          },
+          "dashboardCountProrated": {
+            "type": "number"
+          },
+          "dataTableCount": {
+            "type": "number"
+          },
+          "dataTableRowCount": {
+            "type": "number"
+          },
+          "dataTableTotalSizeMb": {
+            "type": "number"
+          },
+          "deviceCount": {
+            "type": "number"
+          },
+          "deviceCountProrated": {
+            "type": "number"
+          },
+          "deviceRecipeCount": {
+            "type": "number"
+          },
+          "eventCount": {
+            "type": "number"
+          },
+          "experienceDomainCount": {
+            "type": "number"
+          },
+          "experienceEndpointCount": {
+            "type": "number"
+          },
+          "experienceGroupCount": {
+            "type": "number"
+          },
+          "experienceSlugCount": {
+            "type": "number"
+          },
+          "experienceUserCount": {
+            "type": "number"
+          },
+          "experienceVersionCount": {
+            "type": "number"
+          },
+          "experienceViewCount": {
+            "type": "number"
+          },
+          "fileCount": {
+            "type": "number"
+          },
+          "fileTotalSizeMb": {
+            "type": "number"
+          },
+          "integrationCount": {
+            "type": "number"
+          },
+          "notebookCount": {
+            "type": "number"
+          },
+          "resourceJobCount": {
+            "type": "integer"
+          },
+          "notebookRunCount": {
+            "type": "number"
+          },
+          "notebookMinutesCount": {
+            "type": "number"
+          },
+          "webhookCount": {
+            "type": "number"
+          },
+          "workflowCount": {
+            "type": "number"
+          },
+          "payloadBillableCount": {
+            "type": "number"
+          },
+          "payloadNonbillableCount": {
+            "type": "number"
+          },
+          "payloadBillableSizeMb": {
+            "type": "number"
+          },
+          "payloadNonbillableSizeMb": {
+            "type": "number"
+          },
+          "payloadCountDetails": {
+            "title": "Payload Stats",
+            "description": "Schema for the result of a payload stats request",
+            "type": "object",
+            "properties": {
+              "dataTable": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceCommand": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceConnect": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceDisconnect": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceState": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "endpoint": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "event": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "flowError": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "integration": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "mqttIn": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "mqttOut": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "notebook": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "timer": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "virtualButton": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "webhook": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "resourceJob": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          },
+          "payloadSizeDetails": {
+            "title": "Payload Stats",
+            "description": "Schema for the result of a payload stats request",
+            "type": "object",
+            "properties": {
+              "dataTable": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceCommand": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceConnect": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceDisconnect": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "deviceState": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "endpoint": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "event": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "flowError": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "integration": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "mqttIn": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "mqttOut": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "notebook": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "timer": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "virtualButton": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "webhook": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              },
+              "resourceJob": {
+                "type": "object",
+                "patternProperties": {
+                  ".*": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "additionalProperties": false
       }
     },
     "count": {
